@@ -4,6 +4,6 @@ class Gigasecond
   end
 
   def date
-    (@start + 1000000000).to_date
+    (start + (10 ** 9)).to_date
   end
 end
