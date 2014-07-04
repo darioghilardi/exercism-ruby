@@ -1,23 +1,11 @@
 require 'pry'
 class Complement
   def self.of_dna(sequence)
-    translation = ''
-
-    sequence.chars.each do |nucleotide|
-      translation << translate(nucleotide, 'rna', 'dna')
-    end
-
-    translation
+    sequence.chars.map { |nucleotide| translate(nucleotide, 'rna', 'dna') }.join
   end
 
   def self.of_rna(sequence)
-    translation = ''
-
-    sequence.chars.each do |nucleotide|
-      translation << translate(nucleotide, 'dna', 'rna')
-    end
-
-    translation
+    sequence.chars.map { |nucleotide| translate(nucleotide, 'dna', 'rna') }.join
   end
 
   private
