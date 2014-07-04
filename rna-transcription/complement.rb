@@ -1,5 +1,6 @@
-require 'pry'
 class Complement
+  DICTIONARY = { 'rna' => 'CGTA', 'dna' => 'GCAU' }
+
   def self.of_dna(sequence)
     sequence.chars.map { |nucleotide| translate(nucleotide, 'rna', 'dna') }.join
   end
@@ -11,9 +12,7 @@ class Complement
   private
 
   def self.translate(nucleotide, source, target)
-    dictionary = { 'rna' => 'CGTA', 'dna' => 'GCAU' }
-
-    translation_index = dictionary[source].chars.index(nucleotide)
-    dictionary[target].chars[translation_index]
+    translation_index = DICTIONARY[source].chars.index(nucleotide)
+    DICTIONARY[target].chars[translation_index]
   end
 end
