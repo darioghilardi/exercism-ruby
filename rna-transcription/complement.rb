@@ -25,7 +25,7 @@ class Complement
   def self.translate(nucleotide, source, target)
     dictionary = { 'rna' => 'CGTA', 'dna' => 'GCAU' }
 
-    index = dictionary[source].chars.index(nucleotide)
-    dictionary[target].chars[index]
+    translation_index = dictionary[source].chars.index(nucleotide)
+    dictionary[target].chars[translation_index]
   end
 end
