@@ -1,6 +1,6 @@
 class Hamming
-  def self.compute(dna, dnb)
-    first, second = [dna, dnb].sort_by {|sequence| sequence.length }
-    first.chars.zip(second.chars).select { |(a, b)| a != b }.count
+  def self.compute(dna1, dna2)
+    dna1, dna2 = [dna1, dna2].sort_by(&:length)
+    dna1.chars.zip(dna2.chars).select { |(a, b)| a != b }.count
   end
 end
