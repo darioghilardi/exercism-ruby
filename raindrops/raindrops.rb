@@ -6,22 +6,19 @@ class Raindrops
   def self.convert(number)
     return '1' if number == 1
 
-    out = primes(number).map { |num| picker(num) }.uniq.join
-
-    return number.to_s if out.empty?
-
-    out
+    translation = factors(number).map { |num| speaker(num) }.uniq.join
+    translation.empty? ? number.to_s : translation
   end
 
   private
 
-  def self.picker(number)
-    CONVERSION.select { |num, translation| number == num }.flatten[1]
+  def self.speaker(number)
+    CONVERSION.select { |code, translation| code == number }.flatten.last
   end
 
-  def self.primes(n)
+  def self.factors(n)
     return [] if n == 1
     factor = (2..n).detect {|x| n % x == 0}
-    [factor] + primes(n / factor)
+    [factor] + factors(n / factor)
   end
 end
