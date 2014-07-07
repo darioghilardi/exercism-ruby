@@ -6,13 +6,13 @@ class Raindrops
   def self.convert(number)
     return '1' if number == 1
 
-    translation = factors(number).map { |num| speaker(num) }.uniq.join
+    translation = factors(number).map { |factor| translate(factor) }.uniq.join
     translation.empty? ? number.to_s : translation
   end
 
   private
 
-  def self.speaker(number)
+  def self.translate(number)
     CONVERSION.select { |code, translation| code == number }.flatten.last
   end
 
