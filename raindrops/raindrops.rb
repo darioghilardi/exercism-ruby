@@ -1,20 +1,14 @@
 require 'pry'
 class Raindrops
 
-  CONVERSION = [[3, 'Pling'], [5, 'Plang'], [7, 'Plong']]
+  CONVERSION = { 1 => '1', 3 => 'Pling', 5 => 'Plang', 7 => 'Plong'}
 
   def self.convert(number)
-    return '1' if number == 1
-
-    translation = factors(number).map { |factor| translate(factor) }.uniq.join
+    translation = factors(number).map { |factor| CONVERSION[factor] }.uniq.join
     translation.empty? ? number.to_s : translation
   end
 
   private
-
-  def self.translate(number)
-    CONVERSION.select { |code, translation| code == number }.flatten.last
-  end
 
   def self.factors(n)
     return [] if n == 1
