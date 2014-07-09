@@ -6,7 +6,7 @@ class Raindrops
     conversion << 'Plang' if number % 5 == 0
     conversion << 'Plong' if number % 7 == 0
 
-    return conversion if !conversion.empty?
+    return conversion unless conversion.empty?
     number.to_s
   end
 end
